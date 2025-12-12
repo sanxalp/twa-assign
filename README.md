@@ -1,5 +1,7 @@
 ## Quiz UI (Vite + React + TS)
 
+##ASSIGNMENT FOR THE WEDDING COMPANY
+
 ### Setup
 
 1. Install deps: `npm install`
