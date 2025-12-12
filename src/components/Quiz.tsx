@@ -73,30 +73,27 @@ export default function Quiz() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center relative"
+      className="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8 relative overflow-hidden"
       style={{
         background: 'linear-gradient(107.96deg, #BECFEE 0%, #71C6E2 50%, #D9F4FA 75%, #BECFEE 100%)',
         backdropFilter: 'blur(200px)',
       }}
     >
       <div
-        className="bg-white shadow-2xl relative flex flex-col overflow-hidden"
+        className="bg-white shadow-2xl relative flex flex-col overflow-hidden w-full max-w-5xl lg:max-w-6xl"
         style={{
-          width: '1542px',
-          height: '856px',
-          top: '112px',
-          left: '189px',
           borderRadius: '42px',
           opacity: 1,
+          aspectRatio: '1542 / 856',
         }}
       >
-        <div className="p-12 flex flex-col h-full">
-          <div className="text-center mb-12">
-            <h1 className="text-5xl font-serif italic mb-3">
+        <div className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col h-full">
+          <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif italic mb-2 sm:mb-3">
               <span className="text-gray-800">Test Your </span>
               <span className="text-teal-600">Knowledge</span>
             </h1>
-            <p className="text-gray-600 text-sm">Answer all questions to see your results</p>
+            <p className="text-gray-600 text-xs sm:text-sm">Answer all questions to see your results</p>
           </div>
 
           <ProgressBar
@@ -117,7 +114,7 @@ export default function Quiz() {
           />
 
           {currentQuestionIndex === 0 && (
-            <div className="absolute bottom-8 left-8">
+            <div className="absolute bottom-4 sm:bottom-6 md:bottom-0 left-4 sm:left-6 md:left-8">
               <CatPaw />
             </div>
           )}

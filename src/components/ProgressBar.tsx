@@ -15,11 +15,11 @@ export default function ProgressBar({ totalBars, currentQuestion, completedQuest
   };
 
   return (
-    <div className="flex gap-3 mb-8">
+    <div className="flex gap-2 sm:gap-3 mb-6 sm:mb-8">
       {Array.from({ length: totalBars }).map((_, index) => (
         <div
           key={index}
-          className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden"
+          className="flex-1 h-1 sm:h-1.5 bg-gray-200 rounded-full overflow-hidden"
         >
           <div
             className="h-full bg-gray-800 rounded-full transition-all duration-300 ease-out"
