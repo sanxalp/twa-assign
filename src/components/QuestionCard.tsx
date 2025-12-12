@@ -1,5 +1,5 @@
-import { Question } from '../types/quiz';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Question } from "../types/quiz";
+import { MoveLeft, MoveRight } from "lucide-react";
 
 interface QuestionCardProps {
   question: Question;
@@ -23,55 +23,100 @@ export default function QuestionCard({
   isLastQuestion,
 }: QuestionCardProps) {
   return (
-    <div className="w-full space-y-4 sm:space-y-5 md:space-y-6">
-      <div className="bg-cyan-100 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4">
-        <p className="text-gray-800 font-medium text-center text-sm sm:text-base">
+    <div className="w-full space-y-5">
+      <div
+        className="rounded-2xl px-6 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-[#c5e7f7]"
+        style={{
+          background:
+            "linear-gradient(89.72deg, #C6E9F7 0.09%, #E5F8FF 99.91%)",
+        }}
+      >
+        <p className="font-semibold text-center text-lg leading-6 text-[#1f3846]">
           {questionNumber}. {question.question}
         </p>
       </div>
 
-      <div className="space-y-3 sm:space-y-4">
-        {question.answers.map((answer) => (
-          <button
-            key={answer.id}
-            onClick={() => onSelectAnswer(answer.id)}
-            className={`w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-gray-800 font-medium text-sm sm:text-base transition-all duration-200 ${
-              selectedAnswer === answer.id
-                ? 'bg-cyan-100 shadow-md'
-                : 'bg-gray-50 hover:bg-gray-100 hover:shadow-sm'
-            }`}
-          >
-            {answer.text}
-          </button>
-        ))}
+      <div className="space-y-3">
+        {question.answers.map((answer) => {
+          const selected = selectedAnswer === answer.id;
+          return (
+            <button
+              key={answer.id}
+              onClick={() => onSelectAnswer(answer.id)}
+              className={`w-full px-6 py-4 rounded-2xl border transition-all duration-200 text-base font-semibold ${
+                selected
+                  ? "bg-gradient-to-r from-[#d8f2ff] to-[#cdeefe] border-[#c5e7f7] shadow-[0_12px_24px_rgba(0,0,0,0.06)]"
+                  : "bg-[#eef7fb] border-[#e0ebf4] hover:shadow-[0_12px_24px_rgba(0,0,0,0.04)]"
+              }`}
+            >
+              {answer.text}
+            </button>
+          );
+        })}
       </div>
 
-      <div className="flex justify-end gap-2 sm:gap-3 pt-3 sm:pt-4">
-        {showBack && (
+      <div className="flex justify-end items-center gap-4 pt-5">
+        <button
+          onClick={showBack ? onBack : undefined}
+          disabled={!showBack}
+          className={`w-[50px] h-[50px] rounded-[12px] border transition-all duration-200 flex items-center justify-center flex-shrink-0 shadow-[0_10px_24px_rgba(0,0,0,0.08)] ${
+            showBack
+              ? "border-[#d9e8f3]"
+              : "bg-gradient-to-br from-[#eef3f7] to-[#e1e8ef] border-[#d6e1eb] opacity-70 cursor-not-allowed"
+          }`}
+          style={
+            showBack
+              ? {
+                  background:
+                    "linear-gradient(89.72deg, #C6E9F7 0.09%, #E5F8FF 99.91%)",
+                }
+              : undefined
+          }
+          aria-label="Previous question"
+        >
+          <MoveLeft
+            className={`w-5 h-5 ${
+              showBack ? "text-[#5c6f7b]" : "text-[#a4b2bc]"
+            }`}
+          />
+        </button>
+        {isLastQuestion ? (
           <button
-            onClick={onBack}
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-cyan-100 hover:bg-cyan-200 transition-colors duration-200 flex items-center justify-center flex-shrink-0"
-            aria-label="Previous question"
+            onClick={onNext}
+            disabled={!selectedAnswer}
+            className="h-[50px] w-[141px] rounded-[12px] border border-[#c8e7f7] shadow-[0_10px_24px_rgba(0,0,0,0.08)] flex items-center justify-center transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+            style={{
+              background:
+                "linear-gradient(89.72deg, #C6E9F7 0.09%, #E5F8FF 99.91%)",
+            }}
+            aria-label="Submit quiz"
           >
-            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
+            <span className="text-[#1f3846] font-semibold text-base leading-none">
+              Submit
+            </span>
+          </button>
+        ) : (
+          <button
+            onClick={onNext}
+            disabled={!selectedAnswer}
+            className={`h-[50px] w-[50px] rounded-[12px] flex items-center justify-center flex-shrink-0 border transition-all duration-200 shadow-[0_10px_24px_rgba(0,0,0,0.08)] ${
+              selectedAnswer
+                ? "border-[#c8e7f7] hover:brightness-[1.03]"
+                : "bg-gradient-to-br from-[#e9f2f8] to-[#d9e6f0] border-[#d6e1eb] cursor-not-allowed opacity-60"
+            }`}
+            style={
+              selectedAnswer
+                ? {
+                    background:
+                      "linear-gradient(89.72deg, #C6E9F7 0.09%, #E5F8FF 99.91%)",
+                  }
+                : undefined
+            }
+            aria-label="Next question"
+          >
+            <MoveRight className="w-5 h-5 text-[#1f3846]" />
           </button>
         )}
-        <button
-          onClick={onNext}
-          disabled={!selectedAnswer}
-          className={`rounded-full transition-all duration-200 flex items-center justify-center flex-shrink-0 ${
-            selectedAnswer
-              ? 'bg-cyan-100 hover:bg-cyan-200'
-              : 'bg-gray-200 cursor-not-allowed opacity-50'
-          } ${isLastQuestion ? 'px-4 sm:px-6 h-10 sm:h-12' : 'w-10 h-10 sm:w-12 sm:h-12'}`}
-          aria-label={isLastQuestion ? 'Submit quiz' : 'Next question'}
-        >
-          {isLastQuestion ? (
-            <span className="text-gray-800 font-medium text-sm sm:text-base">Submit</span>
-          ) : (
-            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
-          )}
-        </button>
       </div>
     </div>
   );

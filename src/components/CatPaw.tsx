@@ -1,20 +1,21 @@
-import pawGif from '../assets/cat_paw.gif';
-import bestOfLuckImage from '../assets/image.png';
+import pawGif from "../assets/cat_paw.gif";
 
 export default function CatPaw() {
   return (
-    <div className="relative">
-      <img
-        src={pawGif}
-        alt="cat paw"
-        className="w-16 sm:w-20 md:w-24 lg:w-32 h-16 sm:h-20 md:h-24 lg:h-32 object-contain"
-      />
-      <img
-        src={bestOfLuckImage}
-        alt="best of luck"
-        className="absolute -top-8 sm:-top-12 md:-top-16 -left-12 sm:-left-16 md:-left-20 w-24 sm:w-32 md:w-40 lg:w-48 object-contain animate-bounce z-5000"
-        style={{ animationDuration: '2s' }}
-      />
-    </div>
+    <img
+      src={pawGif}
+      alt="cat paw"
+      className="object-contain absolute"
+      style={{
+        bottom: "0px",
+        left: "40px",
+        width: "173.45px",
+        height: "173.45px",
+        transform: "rotate(0deg)",
+        opacity: 1,
+        zIndex: 900,
+        pointerEvents: "none",
+      }}
+    />
   );
 }

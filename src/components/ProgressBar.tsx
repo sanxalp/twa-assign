@@ -9,21 +9,25 @@ export default function ProgressBar({ totalBars, currentQuestion, completedQuest
     if (index < completedQuestions) {
       return 100;
     } else if (index === currentQuestion) {
-      return 75;
+      return 60;
     }
     return 0;
   };
 
   return (
-    <div className="flex gap-2 sm:gap-3 mb-6 sm:mb-8">
+    <div className="flex gap-5 justify-center mb-10">
       {Array.from({ length: totalBars }).map((_, index) => (
         <div
           key={index}
-          className="flex-1 h-1 sm:h-1.5 bg-gray-200 rounded-full overflow-hidden"
+          className="relative w-[180px] h-[2px] bg-[#e5e8eb] rounded-full overflow-visible"
         >
           <div
-            className="h-full bg-gray-800 rounded-full transition-all duration-300 ease-out"
-            style={{ width: `${getBarProgress(index)}%` }}
+            className="absolute left-0 bg-[#123642] rounded-full transition-all duration-300 ease-out"
+            style={{
+              width: `${getBarProgress(index)}%`,
+              height: "6px",
+              top: "-2px",
+            }}
           />
         </div>
       ))}

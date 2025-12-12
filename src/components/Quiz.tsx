@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { questions } from '../data/questions';
-import ProgressBar from './ProgressBar';
-import QuestionCard from './QuestionCard';
-import ScorePage from './ScorePage';
-import CatPaw from './CatPaw';
+import { useState } from "react";
+import { questions } from "../data/questions";
+import ProgressBar from "./ProgressBar";
+import QuestionCard from "./QuestionCard";
+import ScorePage from "./ScorePage";
+import CatPaw from "./CatPaw";
+import BestOfLuck from "./BestOfLuck";
 
 export default function Quiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -72,28 +73,26 @@ export default function Quiz() {
   }
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8 relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(107.96deg, #BECFEE 0%, #71C6E2 50%, #D9F4FA 75%, #BECFEE 100%)',
-        backdropFilter: 'blur(200px)',
-      }}
-    >
-      <div
-        className="bg-white shadow-2xl relative flex flex-col overflow-hidden w-full max-w-5xl lg:max-w-6xl"
-        style={{
-          borderRadius: '42px',
-          opacity: 1,
-          aspectRatio: '1542 / 856',
-        }}
-      >
-        <div className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col h-full">
-          <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif italic mb-2 sm:mb-3">
-              <span className="text-gray-800">Test Your </span>
-              <span className="text-teal-600">Knowledge</span>
+    <div className="min-h-screen flex items-center justify-center px-6 py-10 relative overflow-hidden">
+      <div className="relative w-full max-w-[1580px] bg-white/70 border border-white/60 rounded-[32px] shadow-[0_30px_70px_rgba(75,140,170,0.35)] backdrop-blur-[3px] overflow-visible">
+        <div className="relative bg-[#f7fdff] rounded-[28px] m-6 p-12 flex flex-col h-full shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] overflow-visible">
+          <div className="text-center mb-10">
+            <h1
+              className="inline-block text-[52px] leading-[62px] font-[700] font-[Playfair Display] italic"
+              style={{
+                background: "linear-gradient(90deg, #15313D 0%, #3CABDA 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Test Your Knowledge
             </h1>
-            <p className="text-gray-600 text-xs sm:text-sm">Answer all questions to see your results</p>
+            <div className="mt-4">
+              <p className="inline-block text-[#3e4951] text-sm font-medium px-5 py-2 bg-white rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.06)] border border-[#e7eef4]">
+                Answer all questions to see your results
+              </p>
+            </div>
           </div>
 
           <ProgressBar
@@ -102,21 +101,24 @@ export default function Quiz() {
             completedQuestions={completedQuestions}
           />
 
-          <QuestionCard
-            question={currentQuestion}
-            questionNumber={currentQuestionIndex + 1}
-            selectedAnswer={selectedAnswer}
-            onSelectAnswer={handleSelectAnswer}
-            onNext={handleNext}
-            onBack={handleBack}
-            showBack={currentQuestionIndex > 0}
-            isLastQuestion={currentQuestionIndex === questions.length - 1}
-          />
+          <div className="mx-auto w-full max-w-4xl">
+            <QuestionCard
+              question={currentQuestion}
+              questionNumber={currentQuestionIndex + 1}
+              selectedAnswer={selectedAnswer}
+              onSelectAnswer={handleSelectAnswer}
+              onNext={handleNext}
+              onBack={handleBack}
+              showBack={currentQuestionIndex > 0}
+              isLastQuestion={currentQuestionIndex === questions.length - 1}
+            />
+          </div>
 
           {currentQuestionIndex === 0 && (
-            <div className="absolute bottom-4 sm:bottom-6 md:bottom-0 left-4 sm:left-6 md:left-8">
+            <>
               <CatPaw />
-            </div>
+              <BestOfLuck />
+            </>
           )}
         </div>
       </div>
