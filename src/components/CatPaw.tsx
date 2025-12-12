@@ -1,4 +1,4 @@
-import pawGif from '../assets/749d79faabe3ab4ee8d83233bf1b15aa4471e72b.gif';
+import pawGif from '../assets/cat_paw.gif';
 import bestOfLuckImage from '../assets/image.png';
 
 export default function CatPaw() {
