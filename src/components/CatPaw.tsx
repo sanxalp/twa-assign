@@ -12,7 +12,7 @@ export default function CatPaw() {
       <img
         src={bestOfLuckImage}
         alt="best of luck"
-        className="absolute -top-8 sm:-top-12 md:-top-16 -right-4 sm:-right-4 md:-left-4 w-24 sm:w-32 md:w-40 lg:w-48 object-contain animate-bounce"
+        className="absolute -top-8 sm:-top-12 md:-top-16 -left-4 sm:-right-4 md:-left-4 w-24 sm:w-32 md:w-40 lg:w-48 object-contain animate-bounce"
         style={{ animationDuration: '2s' }}
       />
     </div>
