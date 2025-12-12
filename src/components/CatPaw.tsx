@@ -5,7 +5,7 @@ export default function CatPaw() {
     <img
       src={pawGif}
       alt="cat paw"
-      className="w-16 sm:w-20 md:w-24 lg:w-32 h-16 sm:h-20 md:h-24 lg:h-32 object-contain"
+      className="w-32 h-32 object-contain"
     />
   );
 }

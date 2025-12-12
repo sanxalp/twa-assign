@@ -73,54 +73,30 @@ export default function Quiz() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative"
       style={{
         background: 'linear-gradient(107.96deg, #BECFEE 0%, #71C6E2 50%, #D9F4FA 75%, #BECFEE 100%)',
+        backdropFilter: 'blur(200px)',
       }}
     >
       <div
-        className="relative flex flex-col overflow-hidden w-full max-w-5xl lg:max-w-6xl shadow-2xl"
+        className="bg-white shadow-2xl relative flex flex-col overflow-hidden"
         style={{
-          borderRadius: '50px',
-          background: 'linear-gradient(112.86deg, rgba(255, 255, 255, 0.4) -6.68%, rgba(255, 255, 255, 0.12) 45.63%, rgba(255, 255, 255, 0.4) 103.45%)',
-          backdropFilter: 'blur(6.97px)',
-          border: '1px solid rgba(255, 255, 255, 0.7)',
-          aspectRatio: '1625 / 920',
+          width: '1542px',
+          height: '856px',
+          top: '112px',
+          left: '189px',
+          borderRadius: '42px',
+          opacity: 1,
         }}
       >
-        <div
-          className="absolute inset-0 rounded-[42px] pointer-events-none"
-          style={{
-            background: '#F4FDFF',
-            margin: '19px',
-          }}
-        />
-
-        <div className="relative p-8 sm:p-10 md:p-12 lg:p-16 flex flex-col h-full justify-between">
-          <div className="text-center space-y-4 sm:space-y-6">
-            <h1
-              className="text-5xl sm:text-6xl md:text-7xl font-serif italic"
-              style={{
-                background: 'linear-gradient(90deg, #15313D 0%, #3CABDA 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                letterSpacing: '-4px',
-              }}
-            >
-              Test Your Knowledge
+        <div className="p-12 flex flex-col h-full">
+          <div className="text-center mb-12">
+            <h1 className="text-5xl font-serif italic mb-3">
+              <span className="text-gray-800">Test Your </span>
+              <span className="text-teal-600">Knowledge</span>
             </h1>
-            <div className="flex justify-center">
-              <div
-                className="px-8 py-3 rounded-lg text-gray-800 font-medium text-lg"
-                style={{
-                  background: '#FFFFFF',
-                  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-                }}
-              >
-                Answer all questions to see your results
-              </div>
-            </div>
+            <p className="text-gray-600 text-sm">Answer all questions to see your results</p>
           </div>
 
           <ProgressBar
@@ -141,7 +117,7 @@ export default function Quiz() {
           />
 
           {currentQuestionIndex === 0 && (
-            <div className="absolute bottom-8 left-8" style={{ transform: 'scaleX(-1)' }}>
+            <div className="absolute bottom-8 left-8">
               <CatPaw />
             </div>
           )}

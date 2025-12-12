@@ -31,49 +31,25 @@ export default function ScorePage({ score, totalQuestions, onStartAgain }: Score
   }, [percentage]);
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center p-4 sm:p-8 relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(107.96deg, #BECFEE 0%, #71C6E2 50%, #D9F4FA 75%, #BECFEE 100%)',
-      }}
-    >
-      <div className="text-center space-y-12 sm:space-y-16 w-full max-w-2xl">
-        <p className="text-gray-700 text-lg sm:text-xl font-medium">Keep Learning!</p>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-8">
+      <div className="text-center space-y-12">
+        <p className="text-gray-600 text-lg font-medium">Keep Learning!</p>
 
-        <div className="space-y-6 sm:space-y-10">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif italic" style={{
-            background: 'linear-gradient(90deg, #15313D 0%, #3CABDA 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}>
-            Your Final Score is
+        <div className="space-y-6">
+          <h1 className="text-5xl font-serif italic text-teal-700">
+            Your Final score is
           </h1>
-          <div className="flex items-baseline justify-center gap-2 sm:gap-4">
-            <div className="text-7xl sm:text-8xl md:text-[140px] leading-none font-serif font-bold" style={{
-              background: 'linear-gradient(90deg, #15313D 0%, #3CABDA 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}>
+          <div className="flex items-baseline justify-center gap-2">
+            <div className="text-[160px] leading-none font-serif font-bold text-teal-700">
               {displayScore}
             </div>
-            <span className="text-3xl sm:text-5xl md:text-7xl font-serif font-bold" style={{
-              background: 'linear-gradient(90deg, #15313D 0%, #3CABDA 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}>%</span>
+            <span className="text-6xl font-serif font-bold text-teal-700 mb-8">%</span>
           </div>
         </div>
 
         <button
           onClick={onStartAgain}
-          className="px-8 sm:px-12 py-3 sm:py-4 text-gray-800 font-semibold text-lg sm:text-xl rounded-xl transition-all duration-200"
-          style={{
-            background: 'linear-gradient(89.72deg, #C6E9F7 0.09%, #E5F8FF 99.91%)',
-            border: '1px solid #96E5FF',
-          }}
+          className="px-8 py-3 bg-cyan-100 hover:bg-cyan-200 text-gray-800 font-medium rounded-2xl transition-colors duration-200"
         >
           Start Again
         </button>

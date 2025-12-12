@@ -23,72 +23,53 @@ export default function QuestionCard({
   isLastQuestion,
 }: QuestionCardProps) {
   return (
-    <div className="w-full space-y-6 sm:space-y-8">
-      <div
-        className="rounded-xl px-6 sm:px-8 py-4 sm:py-6 text-center"
-        style={{
-          background: 'linear-gradient(89.72deg, #C6E9F7 0.09%, #E5F8FF 99.91%)',
-          border: '1px solid #96E5FF',
-        }}
-      >
-        <p className="text-gray-800 font-semibold text-lg sm:text-2xl">
+    <div className="w-full max-w-2xl space-y-6">
+      <div className="bg-cyan-100 rounded-2xl px-6 py-4">
+        <p className="text-gray-800 font-medium text-center">
           {questionNumber}. {question.question}
         </p>
       </div>
 
-      <div className="space-y-4 sm:space-y-5">
+      <div className="space-y-4">
         {question.answers.map((answer) => (
           <button
             key={answer.id}
             onClick={() => onSelectAnswer(answer.id)}
-            className="w-full px-6 sm:px-8 py-4 sm:py-5 rounded-xl text-gray-800 font-semibold text-lg sm:text-2xl transition-all duration-200 text-center"
-            style={{
-              background: selectedAnswer === answer.id
-                ? 'linear-gradient(89.72deg, #C6E9F7 0.09%, #E5F8FF 99.91%)'
-                : 'linear-gradient(89.72deg, rgba(198, 233, 247, 0.1) 0.09%, rgba(229, 248, 255, 0.1) 99.91%)',
-              border: selectedAnswer === answer.id
-                ? '1px solid #96E5FF'
-                : '1px solid rgba(150, 229, 255, 0.5)',
-            }}
+            className={`w-full px-6 py-4 rounded-2xl text-gray-800 font-medium transition-all duration-200 ${
+              selectedAnswer === answer.id
+                ? 'bg-cyan-100 shadow-md'
+                : 'bg-gray-50 hover:bg-gray-100 hover:shadow-sm'
+            }`}
           >
             {answer.text}
           </button>
         ))}
       </div>
 
-      <div className="flex justify-end gap-3 sm:gap-4 pt-4 sm:pt-6">
+      <div className="flex justify-end gap-3 pt-4">
         {showBack && (
           <button
             onClick={onBack}
-            className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200"
-            style={{
-              background: 'linear-gradient(89.72deg, #C6E9F7 0.09%, #E5F8FF 99.91%)',
-              border: '1px solid rgba(150, 229, 255, 0.05)',
-              opacity: 0.3,
-            }}
+            className="w-12 h-12 rounded-full bg-cyan-100 hover:bg-cyan-200 transition-colors duration-200 flex items-center justify-center"
             aria-label="Previous question"
           >
-            <ChevronLeft className="w-6 h-6 text-gray-700" />
+            <ChevronLeft className="w-5 h-5 text-gray-700" />
           </button>
         )}
         <button
           onClick={onNext}
           disabled={!selectedAnswer}
-          className="flex items-center justify-center flex-shrink-0 rounded-xl transition-all duration-200 px-6 sm:px-8 py-3 sm:py-4"
-          style={{
-            background: selectedAnswer
-              ? 'linear-gradient(89.72deg, #C6E9F7 0.09%, #E5F8FF 99.91%)'
-              : '#E3E3E3',
-            border: selectedAnswer ? '1px solid rgba(150, 229, 255, 0.05)' : '1px solid #E3E3E3',
-            opacity: selectedAnswer ? 1 : 0.5,
-            cursor: selectedAnswer ? 'pointer' : 'not-allowed',
-          }}
+          className={`w-12 h-12 rounded-full transition-all duration-200 flex items-center justify-center ${
+            selectedAnswer
+              ? 'bg-cyan-100 hover:bg-cyan-200'
+              : 'bg-gray-200 cursor-not-allowed opacity-50'
+          } ${isLastQuestion ? 'px-6 w-auto' : ''}`}
           aria-label={isLastQuestion ? 'Submit quiz' : 'Next question'}
         >
           {isLastQuestion ? (
-            <span className="text-gray-800 font-semibold text-lg">Submit</span>
+            <span className="text-gray-800 font-medium px-2">Submit</span>
           ) : (
-            <ChevronRight className="w-6 h-6 text-gray-700" />
+            <ChevronRight className="w-5 h-5 text-gray-700" />
           )}
         </button>
       </div>
